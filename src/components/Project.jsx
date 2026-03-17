@@ -8,16 +8,21 @@ export default function Project({ setProjects, projects, projectId }) {
 
   function addTaskHandler() {
     const taskValue = taskRef.current.value
-    setTasks((tasks) => [...tasks, { description: taskValue, id: nextTaskId }])
+    if (taskValue !== "") {
+      setTasks((tasks) => [
+        ...tasks,
+        { description: taskValue, id: nextTaskId },
+      ])
 
-    // add the tasks to the current project
-    // setProject(prev => {
-    //   ...prev,
-    // })
-    console.log("project = ", project)
+      // add the tasks to the current project
+      // setProject(prev => {
+      //   ...prev,
+      // })
+      // console.log("project = ", project)
 
-    setNextTaskId((id) => id + 1)
-    taskRef.current.value = ""
+      setNextTaskId((id) => id + 1)
+      taskRef.current.value = ""
+    }
   }
 
   return (
