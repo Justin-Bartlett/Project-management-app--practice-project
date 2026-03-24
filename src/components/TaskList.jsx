@@ -5,19 +5,14 @@ export default function TaskList({
   projects,
   projectId,
   tasks,
-  setTasks,
+  deleteTask,
 }) {
   return (
     <>
       {tasks.map((task) => (
         <p className="" key={task.id}>
           {task.description}
-          <button
-            onClick={() => {
-              setTasks(tasks.filter((t) => t.id !== task.id))
-            }}
-            className="mx-11"
-          >
+          <button onClick={() => deleteTask(task.id)} className="mx-11">
             Delete
           </button>
         </p>
