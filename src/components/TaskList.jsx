@@ -1,12 +1,6 @@
 import { useRef } from "react"
 
-export default function TaskList({
-  setProjects,
-  projects,
-  projectId,
-  tasks,
-  deleteTask,
-}) {
+export default function TaskList({ tasks, deleteTask }) {
   return (
     <>
       {tasks.map((task) => (

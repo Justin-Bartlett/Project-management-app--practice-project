@@ -1,8 +1,12 @@
-import React from "react"
+import { useContext } from "react"
 
-export default function ProjectList({ projects, showProject }) {
+import { AppContext } from "../store/app-context"
+
+export default function ProjectList() {
   const buttonStyles =
     "px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800"
+
+  const { projects, showProject } = useContext(AppContext)
 
   function handleProjectClick(projectId) {
     showProject(projectId)

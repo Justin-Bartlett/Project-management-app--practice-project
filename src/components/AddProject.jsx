@@ -1,10 +1,13 @@
-import { useRef, useState } from "react"
+import { useRef, useContext } from "react"
 
 import ErrorModal from "../components/ErrorModal"
+import { AppContext } from "../store/app-context"
 
-export default function AddProject({ addNewProject }) {
+export default function AddProject() {
   const buttonStyles =
     "px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800"
+
+  const { addNewProject } = useContext(AppContext)
 
   const titleRef = useRef()
   const descriptionRef = useRef()

@@ -1,12 +1,15 @@
-import { useRef } from "react"
+import { useRef, useContext } from "react"
 
 import TaskList from "./TaskList"
 import ErrorModal from "./ErrorModal"
+import { AppContext } from "../store/app-context"
 
-export default function Project({ setProjects, projects, projectId }) {
+export default function Project({ projectId }) {
   const taskRef = useRef()
   const errorRef = useRef(false)
   const dialogRef = useRef()
+
+  const { projects, setProjects } = useContext(AppContext)
 
   const tasks = projects[projectId]?.tasks || []
   const nextTaskId =
@@ -65,13 +68,7 @@ export default function Project({ setProjects, projects, projectId }) {
           <input ref={taskRef} type="text" autoFocus />
           <button onClick={addTaskHandler}>Add Task</button>
         </article>
-        <TaskList
-          setProjects={setProjects}
-          projects={projects}
-          projectId={projectId}
-          tasks={tasks}
-          deleteTask={deleteTask}
-        />
+        <TaskList tasks={tasks} deleteTask={deleteTask} />
       </section>
     </>
   )
